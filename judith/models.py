@@ -14,6 +14,7 @@ class BioCastellano(models.Model):
         verbose_name = "Bio Castellano"
         verbose_name_plural = "Bio Castellano"
 
+
 class BioIngles(models.Model):
     bio_text = models.TextField()
     bio_file = models.FileField()
@@ -37,12 +38,13 @@ class HomePageItems(models.Model):
         verbose_name = "Homepage"
         verbose_name_plural = "Homepage"
 
+
 class PortfolioItem(models.Model):
     portfolio_image = models.ImageField()
     portfolio_description = models.TextField()
     PORTFOLIO_SITE_HOSTING_CHOICES = [
-        ('PD', 'PDF'),
         ('EX', 'ExternalSite'),
+        ('PD', 'PDF')
     ]
     portfolio_item_hosting = models.CharField(
         max_length=2,
@@ -59,6 +61,7 @@ class PortfolioItem(models.Model):
 
     def __str__(self):
         return self.portfolio_description
+
 
 class BlogPost(models.Model):
     headline = models.CharField(max_length=70)

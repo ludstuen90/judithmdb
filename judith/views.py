@@ -8,22 +8,32 @@ class HomepageView(TemplateView):
 
     @staticmethod
     def row_of_three_maker(queryset):
+        """
+        :param queryset: A queryset from the portfolio model
+        :return: A list of lists with 3 items each. Each item in the list is a portfolio
+        until the end, where padding is added in the form of a string until three list
+        items is reached.
+        """
         rows = list()
         row = list()
         print("QUERYSET AL PRINCIPIO", len(queryset))
         for index, item in enumerate(queryset):
-            space = index % 4
-            print("SPACE IS: ", space)
-            if space == 0:
-                print("TRIGGERING ELSE")
+            space = index % 3
+            print("SPACE IS: ", index, space)
+            row.append(item)
+            if len(row) == 3:
                 row_to_copy = row.copy()
                 rows.append(row_to_copy)
                 row = list()
-            else:
-                row.append(item)
-        if len(row) != 0:
+        if len(row) == 1:
+            row.append("")
+            row.append("")
             rows.append(row)
-        rows.pop(0)
+        if len(row) == 2:
+            row.append("")
+            rows.append(row)
+        print("AT THE END, THE LENGTH OF THE ROW IS: ", len(row))
+        print("ROW AT END IS: ", type(row))
         return rows
 
     def get_context_data(self, **kwargs):
