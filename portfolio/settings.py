@@ -90,12 +90,12 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': os.getenv("DJANGO_DATABASE_ENGINE"),
         'NAME': os.getenv("DJANGO_DATABASE_NAME"),
         'USER': os.getenv("DJANGO_DATABASE_USER"),
         'PASSWORD': os.getenv("DJANGO_DATABASE_PASSWORD"),
-        'HOST': 'db',
-        'PORT': 5432,
+        'HOST': os.getenv("DJANGO_DATABASE_HOST"),
+        'PORT': os.getenv("DJANGO_DATABASE_PORT"),
     }
 }
 
