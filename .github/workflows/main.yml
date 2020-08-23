@@ -39,5 +39,9 @@ jobs:
           SSH_KEY: ${{ secrets.PROD_SSH_KEY }}
           SSH_HOST: ${{ secrets.PROD_SSH_HOST }}
  
+  
+      - name: cat
+        run: cat ~/.ssh/staging.key
+ 
       - name: Stop the server
-        run: ssh ubuntu@52.201.16.250 -i ~/.ssh/staging.key 'sudo systemctl stop nginx'
+        run: ssh staging 'sudo systemctl stop nginx'
