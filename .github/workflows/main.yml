@@ -21,4 +21,3 @@ jobs:
           user: ${{ secrets.PROD_SSH_USER }}
           private_key: ${{ secrets.PROD_SSH_KEY }}
           commands: sudo systemctl start nginx
-
