@@ -37,4 +37,4 @@ jobs:
           SSH_HOST: ${{ secrets.PROD_SSH_HOST }}
 
       - name: Stop the server
-        run: ssh staging 'sudo systemctl stop nginx'
+        run: ssh prod 'sudo systemctl stop nginx'
