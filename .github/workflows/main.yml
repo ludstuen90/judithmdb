@@ -21,13 +21,13 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/prod.key
-          chmod 600 ~/.ssh/prod.key
+          echo "$SSH_KEY" > ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
           cat >>~/.ssh/config <<END
-          Host prod
+          Host staging
             HostName $SSH_HOST
             User $SSH_USER
-            IdentityFile ~/.ssh/prod.key
+            IdentityFile ~/.ssh/staging.key
             StrictHostKeyChecking no
           END
         env:
@@ -36,4 +36,4 @@ jobs:
           SSH_HOST: ${{ secrets.PROD_SSH_HOST }}
 
       - name: Stop the server
-        run: ssh prod 'sudo systemctl stop nginx'
+        run: ssh staging 'sudo systemctl stop nginx'
