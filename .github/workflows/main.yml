@@ -13,35 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     # needs: test
-    steps:
-      - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/staging.key
-          chmod 700 ~/.ssh/staging.key
-          cat >>~/.ssh/config <<END
-          Host staging
-            HostName $SSH_HOST
-            User $SSH_USER
-            IdentityFile ~/.ssh/staging.key
-            StrictHostKeyChecking no
-          END
-        env:
-          SSH_USER: ${{ secrets.PROD_SSH_USER }}
-          SSH_KEY: ${{ secrets.PROD_SSH_KEY }}
-          SSH_HOST: ${{ secrets.PROD_SSH_HOST }}
- 
-      - name: Configure known hosts
-        run: |
-          ssh-keyscan -H ${{secrets.PROD_SSH_HOST}} > ~/.ssh/known_hosts
-        env:
-          SSH_USER: ${{ secrets.PROD_SSH_USER }}
-          SSH_KEY: ${{ secrets.PROD_SSH_KEY }}
-          SSH_HOST: ${{ secrets.PROD_SSH_HOST }}
- 
-  
-      - name: cat
-        run: cat ~/.ssh/staging.key
- 
-      - name: Stop the server
-        run: ssh  ubuntu@52.201.16.250 -i  ~/.ssh/staging.key 'sudo systemctl stop nginx'
+    steps:        
+      - name: Run a command remotely
+        uses: docker://evaneos/ssh-action:0.1.0
+        with:
+          hosts:  ${{ secrets.PROD_SSH_HOST }}
+          user: ${{ secrets.PROD_SSH_USER }}
+          private_key: ${{ secrets.PROD_SSH_KEY }}
+          commands: sudo systemctl stop nginx
+
