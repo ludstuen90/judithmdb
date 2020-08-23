@@ -15,7 +15,7 @@ jobs:
     # needs: test
     steps:        
       - name: Run a command remotely
-        uses: docker://evaneos/ssh-action:0.1.0
+        uses: Evaneos/ssh-action@v0.1.0
         with:
           hosts:  ${{ secrets.PROD_SSH_HOST }}
           user: ${{ secrets.PROD_SSH_USER }}
