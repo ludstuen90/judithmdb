@@ -6,9 +6,9 @@ name: Deploy Script
 # events but only for the master branch
 on:
   push:
-    branches: [ ludstuen90-patch-1 ]
+    branches: [ master ]
   pull_request:
-    branches: [ ludstuen90-patch-1 ]
+    branches: [ master ]
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
