@@ -30,6 +30,6 @@ jobs:
           SSH_USER: ${{ secrets.PROD_SSH_USER }}
           SSH_KEY: ${{ secrets.PROD_SSH_KEY }}
           SSH_HOST: ${{ secrets.PROD_SSH_HOST }}
-
+ 
       - name: Stop the server
         run: ssh staging 'sudo systemctl stop nginx'
