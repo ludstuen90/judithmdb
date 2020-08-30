@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from judith.models import PortfolioItem
+from judith.models import PortfolioItem, BioCastellano, BioIngles
 
 
 class HomepageView(TemplateView):
@@ -41,9 +41,14 @@ class HomepageView(TemplateView):
 
         # Crear listas de 3 de los items en el portafolio para que podamos
         # poner 3 por linea en la página
-        portfolio_queryset = PortfolioItem.objects.all()
+        portfolio_queryset = PortfolioItem.objects.all().order_by("pk")
         list_of_rows = self.row_of_three_maker(portfolio_queryset)
+        bio_ingles = BioIngles.objects.all().first()
+        bio_castellano = BioCastellano.objects.all().first()
+        print("Blog castellano es: ", bio_castellano)
         for x in list_of_rows:
             print("!! ROW", len(x))
         data['portfolio_items'] = list_of_rows
+        data['bio_ingles'] = bio_ingles
+        data['bio_castellano'] = bio_castellano
         return data

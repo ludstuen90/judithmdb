@@ -16,7 +16,7 @@
 
 <body>
 
-<div class="container">
+<div class="container-fluid">
   <div class="row row-cols-1">
     <div class="col">
       <div class="logo-header">
@@ -33,28 +33,12 @@
   <div class="row">
     <div class="col-md-4">
       <div class="homepage-bio">
-      <p>
-        <b> Bio-Castellano </b>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type
-        specimen book. It has survived not only five centuries, but also the leap
-        into electronic typesetting, remaining essentially unchanged. It was
-        popularised in the 1960s with the release of Letraset sheets containing
-        Lorem Ipsum passages, and more recently with desktop publishing software like
-        Aldus PageMaker including versions of Lorem Ipsum.</p>
-      <p>
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
-        in a piece of classical Latin literature from 45 BC, making it over 2000 years
-        old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
-        looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum
-        passage, and going through the cites of the word in classical literature,
-        discovered the undoubtable source.
-        Lorem Ipsum comes from sections 1.10.32 and
-      </p>
-        <p>Descargar CV
+
+       {{ bio_castellano.bio_text | safe }}
+
+        <a target="_blank" href="{% get_media_prefix %}{{ bio_castellano.bio_file }}"><p>Descargar CV
           <img src="{% get_media_prefix %}notes.png">
-        </p>
+        </p></a>
       </div>
     </div>
 
@@ -76,27 +60,12 @@
     </div>
     <div class="col-md-4">
       <div class="homepage-bio">
-      <p>
-      <b>Bio-Ingles</b>
-        It is a long established fact that a reader will be distracted by the readable
-        content of a page when looking at its layout. The point of using Lorem Ipsum is
-        that it has a more-or-less normal distribution of letters, as opposed to using
-        'Content here, content here', making it look like readable English. Many desktop
-        publishing packages and web page editors now use Lorem Ipsum as their default
-        model text, and a search for 'lorem ipsum' will uncover many web sites still
-        in their infancy. Various versions have evolved over the years, sometimes by
-        accident, sometimes on purpose (injected humour and the like). </p>
-        <p>
-        There are many variations of passages of Lorem Ipsum available, but the
-        majority have suffered alteration in some form, by injected humour, or
-        randomised words which don't look even slightly believable. If you are
-        going to use a passage of Lorem Ipsum, you need to be sure there isn't
-        anything embarrassing hidden in the middle of text. All the Lorem Ipsum
-        generators on the Internet tend to repeat predefined chunks as necessary,
-        making this the first true generator on the Internet.
-      </p>
-      <p>Download Resumé
-        <img src="{% get_media_prefix %}notes.png">
+
+      {{ bio_ingles.bio_text | safe }}
+
+        <a target="_blank" href="{% get_media_prefix %}{{ bio_ingles.bio_file }}">
+          <p>Download Resumé
+        <img src="{% get_media_prefix %}notes.png"></a>
       </p>
     </div>
   </div>
@@ -110,9 +79,11 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-4">
+    <div class="card-group">
         {% for clip1, clip2, clip3 in portfolio_items %}
+     <!-- <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
          {% if clip1.portfolio_image %}
           <a target="_blank" href="{% if clip1.portfolio_item_hosting == 'PD' %}
             {{ clip1.bio_file }}
@@ -120,48 +91,69 @@
             {{ clip1.external_site_url }}
              {% endif %}">
 
-            <img class="portfolio-image" src="{% get_media_prefix %}{{ clip1.portfolio_image }}">
+            <img class="card-img" src="{% get_media_prefix %}{{ clip1.portfolio_image }}">
            {% endif %}
-          </a>
-        {{ clip1.portfolio_description }}
+
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <p class="card-text">{{ clip1.portfolio_description | safe  }}</p>
+              </div>
+            </div>
+          </div>
+        </div>-->
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{% get_media_prefix %}{{ clip1.portfolio_image }}" class="card-img" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <p class="card-text">{{ clip1.portfolio_description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
         {% endfor %}
-    </div>
 
-      <div class="col-md-4">
+
+
         {% for clip1, clip2, clip3 in portfolio_items %}
-         {% if clip2.portfolio_image %}
-          <a target="_blank" href="{% if clip2.portfolio_item_hosting == 'PD' %}
-            {{ clip2.bio_file }}
-            {% elif clip2.portfolio_item_hosting == 'EX' %}
-            {{ clip2.external_site_url }}
-             {% endif %}">
+           <div class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="{% get_media_prefix %}{{ clip2.portfolio_image }}" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <p class="card-text">{{ clip2.portfolio_description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-            <img class="portfolio-image" src="{% get_media_prefix %}{{ clip2.portfolio_image }}">
-           {% endif %}
-          </a>
-        {{ clip2.portfolio_description }}
         {% endfor %}
-    </div>
 
+
+
+        {% for clip1, clip2, clip3 in portfolio_items %}
+  <div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
     <div class="col-md-4">
-        {% for clip1, clip2, clip3 in portfolio_items %}
-         {% if clip3.portfolio_image %}
-          <a target="_blank" href="{% if clip3.portfolio_item_hosting == 'PD' %}
-            {{ clip3.bio_file }}
-            {% elif clip3.portfolio_item_hosting == 'EX' %}
-            {{ clip3.external_site_url }}
-             {% endif %}">
-
-            <img class="portfolio-image" src="{% get_media_prefix %}{{ clip3.portfolio_image }}">
-           {% endif %}
-          </a>
-        {{ clip3.portfolio_description }}
+      <img src="{% get_media_prefix %}{{ clip3.portfolio_image }}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <p class="card-text">{{ clip3.portfolio_description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
             {% endfor %}
-    </div>
 
-    </div>
 
+      </div>
 
   <div class="row row-cols-1">
     <div class="col">
@@ -170,6 +162,7 @@
       <a href="">Credits</p></a>
 
     </div>
+
   </div>
 
   </div>
