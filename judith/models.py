@@ -28,9 +28,7 @@ class BioIngles(models.Model):
 
 class HomePageItems(models.Model):
     homepage_portrait = models.ImageField()
-    twitter_url = models.CharField(max_length=40)
-    linked_in_url = models.CharField(max_length=40)
-    youtube_url = models.CharField(max_length=40)
+
 
     def __str__(self):
         return "Homepage Item"
@@ -79,6 +77,12 @@ class BlogPost(models.Model):
 class ContactInformation(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=20)
+    twitter_url = models.CharField(max_length=40)
+    linked_in_url = models.CharField(max_length=40)
+    youtube_url = models.CharField(max_length=40)
+    instagram_url = models.CharField(max_length=40)
+    telegram_url = models.CharField(max_length=60)
+
 
     def __str__(self):
         return 'Datos de Contacto'
