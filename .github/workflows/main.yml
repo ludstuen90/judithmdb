@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy Script
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on: [push, pull_request]
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  deploy:
+    name: "Deploy to Server"
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    # needs: test
+    steps:        
+      - name: Run a command remotely
+        uses: docker://evaneos/ssh-action:0.1.0
+        with:
+          hosts:  ${{ secrets.PROD_SSH_HOST }}
+          user: ${{ secrets.PROD_SSH_USER }}
+          private_key: ${{ secrets.PROD_SSH_KEY }}
+          commands: sudo systemctl start nginx
