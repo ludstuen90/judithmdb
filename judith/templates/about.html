@@ -79,8 +79,9 @@
       </div>
     </div>
 
-    <div class="card-group">
-        {% for clip1, clip2, clip3 in portfolio_items %}
+
+      {% for clip1, clip2, clip3 in portfolio_items %}
+      <div class="card-group">
      <!-- <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
@@ -102,10 +103,17 @@
             </div>
           </div>
         </div>-->
+
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
+             <a target="_blank" href="{% if clip1.portfolio_item_hosting == 'PD' %}
+            {{ clip1.bio_file }}
+            {% elif clip1.portfolio_item_hosting == 'EX' %}
+            {{ clip1.external_site_url }}
+             {% endif %}">
             <img src="{% get_media_prefix %}{{ clip1.portfolio_image }}" class="card-img" alt="...">
+             </a>
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -115,15 +123,18 @@
         </div>
       </div>
 
-        {% endfor %}
+{% if clip2.portfolio_description %}
 
-
-
-        {% for clip1, clip2, clip3 in portfolio_items %}
            <div class="card mb-3" style="max-width: 540px;">
           <div class="row no-gutters">
             <div class="col-md-4">
+               <a target="_blank" href="{% if clip2.portfolio_item_hosting == 'PD' %}
+            {{ clip2.bio_file }}
+            {% elif clip2.portfolio_item_hosting == 'EX' %}
+            {{ clip2.external_site_url }}
+             {% endif %}">
               <img src="{% get_media_prefix %}{{ clip2.portfolio_image }}" class="card-img" alt="...">
+               </a>
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -132,16 +143,19 @@
             </div>
           </div>
         </div>
+{% endif %}
 
-        {% endfor %}
-
-
-
-        {% for clip1, clip2, clip3 in portfolio_items %}
+{% if clip3.portfolio_description %}
   <div class="card mb-3" style="max-width: 540px;">
   <div class="row no-gutters">
     <div class="col-md-4">
+       <a target="_blank" href="{% if clip3.portfolio_item_hosting == 'PD' %}
+            {{ clip3.bio_file }}
+            {% elif clip3.portfolio_item_hosting == 'EX' %}
+            {{ clip3.external_site_url }}
+             {% endif %}">
       <img src="{% get_media_prefix %}{{ clip3.portfolio_image }}" class="card-img" alt="...">
+        </a>
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -150,11 +164,10 @@
     </div>
   </div>
 </div>
-            {% endfor %}
-
+{% endif %}
 
       </div>
-
+ {% endfor %}
   <div class="row row-cols-1">
     <div class="col">
       <p>Copyright Judith Morales del Barco, {% now "Y" %}<br>
