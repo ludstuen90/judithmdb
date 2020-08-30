@@ -51,6 +51,10 @@ margin: 40px 0 80px 0;
     display: inline;
  }
 
+ .social-media-row img {
+ width: 64px;
+ }
+
 .header-seccion {
 text-align: center;
 margin: 80px 0 80px 0;
