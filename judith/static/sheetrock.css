@@ -24,7 +24,7 @@ body {
 
 .homepage-logo {
 width: 60%;
-margin: 50px 0 20px 20%;
+margin: 50px 0 20px 19%;
 
 }
 
@@ -53,8 +53,6 @@ margin: 40px 0 80px 0;
 
 }
 
-
-
 .profile-image {
   display: block;
   margin-left: auto;
@@ -72,12 +70,44 @@ margin: 40px 0 80px 0;
   display:inline-block
  }
 
+
+
+
 .social-media-row {
      position: absolute;
      top: 250px;
+     left: -1%;
      width: 375px;
-
  }
+
+
+@media(max-width: 550px) and (min-width: 530px) {
+.social-media-row {
+     left: 10%;
+ }
+}
+
+
+@media(max-width: 420px) and (min-width: 399px) {
+.social-media-row {
+     left: -1%;
+ }
+}
+
+
+@media(max-width: 365px) and (min-width: 358px) {
+.social-media-row {
+     left: -8%;
+ }
+}
+
+@media(max-width: 325px) {
+.social-media-row {
+     left: -15%;
+ }
+}
+
+
 
  .social-media-row img {
     width: 64px;
