@@ -13,11 +13,52 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     # needs: test
-    steps:        
-      - name: Run a command remotely
+    steps:
+
+      - name: Git Pull
         uses: docker://evaneos/ssh-action:0.1.0
         with:
           hosts:  ${{ secrets.PROD_SSH_HOST }}
           user: ${{ secrets.PROD_SSH_USER }}
           private_key: ${{ secrets.PROD_SSH_KEY }}
-          commands: sudo systemctl start nginx
+          commands: sudo git -C ${{ secrets.SITE_REPO_FOLDER }} pull origin
+
+      - name: Git Pull
+        uses: docker://evaneos/ssh-action:0.1.0
+        with:
+          hosts:  ${{ secrets.PROD_SSH_HOST }}
+          user: ${{ secrets.PROD_SSH_USER }}
+          private_key: ${{ secrets.PROD_SSH_KEY }}
+          commands: sudo git -C ${{ secrets.SITE_REPO_FOLDER }} pull origin
+
+      - name: Collect Static Files
+        uses: docker://evaneos/ssh-action:0.1.0
+        with:
+          hosts:  ${{ secrets.PROD_SSH_HOST }}
+          user: ${{ secrets.PROD_SSH_USER }}
+          private_key: ${{ secrets.PROD_SSH_KEY }}
+          commands: sudo ${{ secrets.SITE_PYTHON_ENV }}/env/bin/python ${{ secrets.SITE_REPO_FOLDER }}/manage.py collectstatic --noinput
+
+      - name: Collect Run Database Migration
+        uses: docker://evaneos/ssh-action:0.1.0
+        with:
+          hosts:  ${{ secrets.PROD_SSH_HOST }}
+          user: ${{ secrets.PROD_SSH_USER }}
+          private_key: ${{ secrets.PROD_SSH_KEY }}
+          commands: sudo ${{ secrets.SITE_PYTHON_ENV }}/env/bin/python ${{ secrets.SITE_REPO_FOLDER }}/manage.py migrate --noinput
+
+      - name: Restart Gunicorn
+        uses: docker://evaneos/ssh-action:0.1.0
+        with:
+          hosts:  ${{ secrets.PROD_SSH_HOST }}
+          user: ${{ secrets.PROD_SSH_USER }}
+          private_key: ${{ secrets.PROD_SSH_KEY }}
+          commands: sudo systemctl restart gunicorn
+
+      - name: Restart Nginx
+        uses: docker://evaneos/ssh-action:0.1.0
+        with:
+          hosts:  ${{ secrets.PROD_SSH_HOST }}
+          user: ${{ secrets.PROD_SSH_USER }}
+          private_key: ${{ secrets.PROD_SSH_KEY }}
+          commands: sudo systemctl restart nginx
