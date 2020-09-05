@@ -21,15 +21,7 @@ jobs:
           hosts:  ${{ secrets.PROD_SSH_HOST }}
           user: ${{ secrets.PROD_SSH_USER }}
           private_key: ${{ secrets.PROD_SSH_KEY }}
-          commands: sudo git -C ${{ secrets.SITE_REPO_FOLDER }} pull origin
-
-      - name: Git Pull
-        uses: docker://evaneos/ssh-action:0.1.0
-        with:
-          hosts:  ${{ secrets.PROD_SSH_HOST }}
-          user: ${{ secrets.PROD_SSH_USER }}
-          private_key: ${{ secrets.PROD_SSH_KEY }}
-          commands: sudo git -C ${{ secrets.SITE_REPO_FOLDER }} pull origin
+          commands: git -C ${{ secrets.SITE_REPO_FOLDER }} pull origin
 
       - name: Collect Static Files
         uses: docker://evaneos/ssh-action:0.1.0
