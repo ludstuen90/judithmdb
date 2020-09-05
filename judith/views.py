@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.views.generic.list import ListView
+
 from judith.models import PortfolioItem, BioCastellano, BioIngles, ContactInformation
 
 
@@ -46,7 +48,6 @@ class HomepageView(TemplateView):
         bio_ingles = BioIngles.objects.all().first()
         bio_castellano = BioCastellano.objects.all().first()
         contact_info = ContactInformation.objects.all().first()
-        print("Blog castellano es: ", bio_castellano)
         for x in list_of_rows:
             print("!! ROW", len(x))
         data['portfolio_items'] = list_of_rows
@@ -54,3 +55,8 @@ class HomepageView(TemplateView):
         data['bio_castellano'] = bio_castellano
         data['contact_info'] = contact_info
         return data
+
+
+
+class PortfolioView(ListView):
+    model = PortfolioItem
