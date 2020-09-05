@@ -22,7 +22,6 @@
     <div class="col-md-4">
         <img class="homepage-logo" src="{% static "Judith - negro.png" %}">
 <img class="profile-image" src="{% get_media_prefix %}placeholder.jpg">
-
     </div>
 
   <div class="col-md-4 ">
@@ -35,17 +34,14 @@
         <li><a target="_blank" href="{{ contact_info.youtube_url }}"><img src="{% static "social-media/youtube.png" %}"></a></li>
         <li><a target="_blank" href="{{ contact_info.twitter_url }}"><img src="{% static "social-media/twitter.png" %}"></a></li>
           <li><a target="_blank" href="{{ contact_info.telegram_url }}"><img src="{% static "social-media/telegram.png" %}"></a></li>
-
       </ul>
     </div>
        {{ bio_castellano.bio_text | safe }}
 
         <a target="_blank" href="{% get_media_prefix %}{{ bio_castellano.bio_file }}"><p>Descargar CV
-          <img src="{% get_media_prefix %}notes.png">
+          <img src="{% static "social-media/document.png" %}">
         </p></a>
       </div>
-
-
 
     </div>
     <div class="col-md-4">
@@ -57,7 +53,7 @@
 
         <a target="_blank" href="{% get_media_prefix %}{{ bio_ingles.bio_file }}">
           <p>Download Resumé
-        <img src="{% get_media_prefix %}notes.png"></a>
+        <img src="{% static "social-media/document.png" %}"></a>
       </p>
     </div>
   </div>
