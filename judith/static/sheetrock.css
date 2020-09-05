@@ -22,6 +22,13 @@ body {
 
 
 
+.homepage-logo {
+width: 60%;
+margin: 50px 0 0 15%;
+
+}
+
+
 h1, h2, h3, h4, h5 {
   background-color: #f4f4f4;
   font-family: 'Bitter',Helvetica,Arial,sans-serif;
@@ -38,21 +45,38 @@ margin: 40px 0 80px 0;
 
 .homepage-bio p {
     padding: 0 10% 0 10%;
+
 }
+
+.homepage-bio p:first-of-type {
+    margin: 330px 0 0 0;
+
+}
+
+
 
 .profile-image {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
+  width: 75%;
   }
 
  .social-media-row ul li  {
     display: inline;
+
+ }
+
+.social-media-row {
+     position: absolute;
+     top: 250px;
+     right: 100px;
+
  }
 
  .social-media-row img {
- width: 64px;
+    width: 64px;
+
  }
 
 .header-seccion {
