@@ -10,7 +10,6 @@ class HomepageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
-
         bio_ingles = BioIngles.objects.all().first()
         bio_castellano = BioCastellano.objects.all().first()
         contact_info = ContactInformation.objects.all().first()
@@ -18,7 +17,6 @@ class HomepageView(TemplateView):
         data['bio_castellano'] = bio_castellano
         data['contact_info'] = contact_info
         return data
-
 
 
 class PortfolioView(ListView):
@@ -34,7 +32,6 @@ class PortfolioView(ListView):
         """
         rows = list()
         row = list()
-        print("QUERYSET AL PRINCIPIO", len(queryset))
         for index, item in enumerate(queryset):
             space = index % 3
             print("SPACE IS: ", index, space)
@@ -50,19 +47,13 @@ class PortfolioView(ListView):
         if len(row) == 2:
             row.append("")
             rows.append(row)
-        print("AT THE END, THE LENGTH OF THE ROW IS: ", len(row))
-        print("ROW AT END IS: ", type(row))
         return rows
-
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
-
         # Crear listas de 3 de los items en el portafolio para que podamos
         # poner 3 por linea en la página
         portfolio_queryset = PortfolioItem.objects.all().order_by("pk")
         list_of_rows = self.row_of_three_maker(portfolio_queryset)
-        for x in list_of_rows:
-            print("!! ROW", len(x))
         data['portfolio_items'] = list_of_rows
         return data
