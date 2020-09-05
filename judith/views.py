@@ -8,6 +8,22 @@ from judith.models import PortfolioItem, BioCastellano, BioIngles, ContactInform
 class HomepageView(TemplateView):
     template_name = "about.html"
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+
+        bio_ingles = BioIngles.objects.all().first()
+        bio_castellano = BioCastellano.objects.all().first()
+        contact_info = ContactInformation.objects.all().first()
+        data['bio_ingles'] = bio_ingles
+        data['bio_castellano'] = bio_castellano
+        data['contact_info'] = contact_info
+        return data
+
+
+
+class PortfolioView(ListView):
+    model = PortfolioItem
+
     @staticmethod
     def row_of_three_maker(queryset):
         """
@@ -38,6 +54,7 @@ class HomepageView(TemplateView):
         print("ROW AT END IS: ", type(row))
         return rows
 
+
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
 
@@ -45,18 +62,7 @@ class HomepageView(TemplateView):
         # poner 3 por linea en la página
         portfolio_queryset = PortfolioItem.objects.all().order_by("pk")
         list_of_rows = self.row_of_three_maker(portfolio_queryset)
-        bio_ingles = BioIngles.objects.all().first()
-        bio_castellano = BioCastellano.objects.all().first()
-        contact_info = ContactInformation.objects.all().first()
         for x in list_of_rows:
             print("!! ROW", len(x))
         data['portfolio_items'] = list_of_rows
-        data['bio_ingles'] = bio_ingles
-        data['bio_castellano'] = bio_castellano
-        data['contact_info'] = contact_info
         return data
-
-
-
-class PortfolioView(ListView):
-    model = PortfolioItem
