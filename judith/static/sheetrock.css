@@ -118,3 +118,7 @@ margin: 40px 0 80px 0;
 text-align: center;
 margin: 80px 0 80px 0;
 }
+
+a {
+color: rgba(0,0,0,.5)
+}
