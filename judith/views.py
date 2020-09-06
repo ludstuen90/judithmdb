@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 
-from judith.models import PortfolioItem, BioCastellano, BioIngles, ContactInformation, EnglishPortfolioItem, CasetllanoPortfolioItem
+from judith.models import PortfolioItem, BioCastellano, BioIngles, ContactInformation, EnglishPortfolioItem, CasetllanoPortfolioItem, HomePageItems
 
 
 class HomepageView(TemplateView):
@@ -13,9 +13,11 @@ class HomepageView(TemplateView):
         bio_ingles = BioIngles.objects.all().first()
         bio_castellano = BioCastellano.objects.all().first()
         contact_info = ContactInformation.objects.all().first()
+        homepage_info = HomePageItems.objects.all().first()
         data['bio_ingles'] = bio_ingles
         data['bio_castellano'] = bio_castellano
         data['contact_info'] = contact_info
+        data['homepage_info'] = homepage_info
         return data
 
 
@@ -73,3 +75,7 @@ class PortfolioViewEs(PortfolioView):
         list_of_rows = self.row_of_three_maker(portfolio_queryset)
         data['portfolio_items'] = list_of_rows
         return data
+
+
+class ThanksView(TemplateView):
+    template_name = "judith/credits.html"

@@ -29,7 +29,6 @@ class BioIngles(models.Model):
 class HomePageItems(models.Model):
     homepage_portrait = models.ImageField()
 
-
     def __str__(self):
         return "Homepage Item"
     class Meta:
