@@ -1,10 +1,11 @@
 from django.db import models
 from datetime import datetime
 from django.utils import timezone
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class BioCastellano(models.Model):
-    bio_text = models.TextField()
+    bio_text = RichTextField()
     bio_file = models.FileField()
 
     def __str__(self):
@@ -16,7 +17,7 @@ class BioCastellano(models.Model):
 
 
 class BioIngles(models.Model):
-    bio_text = models.TextField()
+    bio_text = RichTextField()
     bio_file = models.FileField()
 
     def __str__(self):
