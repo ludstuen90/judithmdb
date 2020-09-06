@@ -32,6 +32,14 @@ jobs:
           private_key: ${{ secrets.PROD_SSH_KEY }}
           commands: git -C ${{ secrets.SITE_REPO_FOLDER }} pull origin
 
+      - name: Install Requirements File
+        uses: docker://evaneos/ssh-action:0.1.0
+        with:
+          hosts: ${{ secrets.PROD_SSH_HOST }}
+          user: ${{ secrets.PROD_SSH_USER }}
+          private_key: ${{ secrets.PROD_SSH_KEY }}
+          commands: sudo ${{ secrets.SITE_PYTHON_ENV }}/env/bin/pip3 install -r ${{ secrets.SITE_REPO_FOLDER }}/requirements.txt
+
       - name: Collect Static Files
         uses: docker://evaneos/ssh-action:0.1.0
         with:
