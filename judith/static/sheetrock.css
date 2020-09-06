@@ -70,15 +70,27 @@ margin: 40px 0 80px 0;
   display:inline-block
  }
 
-
-
-
 .social-media-row {
      position: absolute;
-     top: 194px;
-
      width: 335px;
+     top: 194px;
  }
+
+
+/*
+mobile layout
+*/
+@media (max-width: 700px) {
+.social-media-row {
+     top: 15px;
+ }
+ .homepage-bio  {
+    margin: 85px 0 0 0;
+
+}
+
+}
+
 
 /*
 ipad pro
