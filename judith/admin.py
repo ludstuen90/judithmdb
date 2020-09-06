@@ -1,11 +1,13 @@
 from django.contrib import admin
-from judith.models import BioCastellano, BioIngles, HomePageItems, PortfolioItem, BlogPost, ContactInformation
+from judith.models import BioCastellano, BioIngles, HomePageItems, PortfolioItem, BlogPost, ContactInformation, EnglishPortfolioItem, CasetllanoPortfolioItem
 
 # Register your models here.
 admin.site.register(BioCastellano)
 admin.site.register(BioIngles)
 admin.site.register(HomePageItems)
-admin.site.register(PortfolioItem)
+# admin.site.register(PortfolioItem)
+admin.site.register(EnglishPortfolioItem)
+admin.site.register(CasetllanoPortfolioItem)
 admin.site.register(BlogPost)
 admin.site.register(ContactInformation)
 

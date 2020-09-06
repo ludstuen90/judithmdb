@@ -47,18 +47,25 @@ class PortfolioItem(models.Model):
     portfolio_item_hosting = models.CharField(
         max_length=2,
         choices=PORTFOLIO_SITE_HOSTING_CHOICES,
-        default='PD',
+        default='EX',
     )
     bio_file = models.FileField(blank=True)
     external_site_url = models.CharField(blank=True, max_length=300)
 
-
-    class Meta:
-        verbose_name = "Portfolio"
-        verbose_name_plural = "Portfolio"
-
     def __str__(self):
         return self.portfolio_description
+
+
+class EnglishPortfolioItem(PortfolioItem):
+    class Meta:
+        verbose_name = "Portfolio (EN)"
+        verbose_name_plural = "Portfolio (EN)"
+
+
+class CasetllanoPortfolioItem(PortfolioItem):
+    class Meta:
+        verbose_name = "Portfolio (ES)"
+        verbose_name_plural = "Portfolio (ES)"
 
 
 class BlogPost(models.Model):
@@ -82,7 +89,6 @@ class ContactInformation(models.Model):
     youtube_url = models.CharField(max_length=40)
     instagram_url = models.CharField(max_length=40)
     telegram_url = models.CharField(max_length=60)
-
 
     def __str__(self):
         return 'Datos de Contacto'

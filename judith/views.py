@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 
-from judith.models import PortfolioItem, BioCastellano, BioIngles, ContactInformation
+from judith.models import PortfolioItem, BioCastellano, BioIngles, ContactInformation, EnglishPortfolioItem, CasetllanoPortfolioItem
 
 
 class HomepageView(TemplateView):
@@ -20,8 +20,6 @@ class HomepageView(TemplateView):
 
 
 class PortfolioView(ListView):
-    model = PortfolioItem
-
     @staticmethod
     def row_of_three_maker(queryset):
         """
@@ -49,11 +47,29 @@ class PortfolioView(ListView):
             rows.append(row)
         return rows
 
+
+class PortfolioViewEn(PortfolioView):
+    model = EnglishPortfolioItem
+
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         # Crear listas de 3 de los items en el portafolio para que podamos
         # poner 3 por linea en la página
-        portfolio_queryset = PortfolioItem.objects.all().order_by("pk")
+        portfolio_queryset = EnglishPortfolioItem.objects.all().order_by("pk")
+        list_of_rows = self.row_of_three_maker(portfolio_queryset)
+        data['portfolio_items'] = list_of_rows
+        return data
+
+
+
+class PortfolioViewEs(PortfolioView):
+    model = CasetllanoPortfolioItem
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        # Crear listas de 3 de los items en el portafolio para que podamos
+        # poner 3 por linea en la página
+        portfolio_queryset = CasetllanoPortfolioItem.objects.all().order_by("pk")
         list_of_rows = self.row_of_three_maker(portfolio_queryset)
         data['portfolio_items'] = list_of_rows
         return data
