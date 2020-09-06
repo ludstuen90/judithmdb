@@ -45,6 +45,7 @@ margin: 40px 0 80px 0;
 
 .homepage-bio p {
     padding: 0 10% 0 10%;
+    text-align: justify;
 
 }
 
@@ -62,9 +63,8 @@ margin: 40px 0 80px 0;
 
  .social-media-row ul li  {
     display: inline;
-
-
  }
+
 
 .social-media-row ul li  {
   display:inline-block
@@ -76,9 +76,28 @@ margin: 40px 0 80px 0;
 .social-media-row {
      position: absolute;
      top: 194px;
-     left: -1%;
-     width: 375px;
+
+     width: 335px;
  }
+
+/*
+ipad pro
+*/
+@media(max-width: 1028px) and (min-width: 1020px) {
+.social-media-row {
+     left: 3%;
+ }
+}
+
+
+/*
+ipad
+*/
+@media(max-width: 780px) and (min-width: 765px) {
+.social-media-row {
+     left: -2%;
+ }
+}
 
 
 @media(max-width: 550px) and (min-width: 530px) {
@@ -90,27 +109,48 @@ margin: 40px 0 80px 0;
 
 @media(max-width: 420px) and (min-width: 399px) {
 .social-media-row {
+     left: 5%;
+ }
+}
+
+
+/*
+iphone 6,7,8
+*/
+@media(max-width: 380px) and (min-width: 75px) {
+.social-media-row {
+     left: 1%;
+ }
+}
+
+/*
+galaxy s5
+*/
+@media(max-width: 365px) and (min-width: 358px) {
+.social-media-row {
      left: -1%;
  }
 }
-
-
-@media(max-width: 365px) and (min-width: 358px) {
+/*
+iphone 5
+*/
+@media(max-width: 325px) and (min-width: 315px) {
 .social-media-row {
-     left: -8%;
+     left: -7%;
  }
 }
-
-@media(max-width: 325px) {
+/*
+galaxy fold
+*/
+@media(max-width: 290px) and (min-width: 270px) {
 .social-media-row {
-     left: -15%;
+     left: -13%;
  }
 }
-
 
 
  .social-media-row img {
-    width: 64px;
+    width: 54px;
 
  }
 
