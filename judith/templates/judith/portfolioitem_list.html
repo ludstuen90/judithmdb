@@ -2,16 +2,16 @@
 {% load static %}
 
 
-
 {% block content %}
-
 
 
     <div class="row row-cols-1">
       <div class="col">
-        <h1 class="header-seccion">Portfolio</h1>
+    {% block pageheader %}
+    {% endblock %}
       </div>
     </div>
+
 
 
       {% for clip1, clip2, clip3 in portfolio_items %}
