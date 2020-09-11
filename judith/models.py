@@ -86,7 +86,7 @@ class ContactInformation(models.Model):
     phone = models.CharField(max_length=20)
     twitter_url = models.CharField(max_length=40)
     linked_in_url = models.CharField(max_length=40)
-    youtube_url = models.CharField(max_length=40)
+    youtube_url = models.CharField(max_length=70)
     instagram_url = models.CharField(max_length=40)
     telegram_url = models.CharField(max_length=60)
 
