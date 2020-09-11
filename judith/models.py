@@ -6,7 +6,7 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 class BioCastellano(models.Model):
     bio_text = RichTextField()
-    bio_file = models.FileField()
+    bio_file = models.FileField(blank=True, null=True)
 
     def __str__(self):
         return "Bio Castellano"
@@ -18,7 +18,7 @@ class BioCastellano(models.Model):
 
 class BioIngles(models.Model):
     bio_text = RichTextField()
-    bio_file = models.FileField()
+    bio_file = models.FileField(blank=True, null=True)
 
     def __str__(self):
         return "Bio Inglés"
@@ -82,13 +82,13 @@ class BlogPost(models.Model):
 
 
 class ContactInformation(models.Model):
-    email = models.EmailField()
-    phone = models.CharField(max_length=20)
-    twitter_url = models.CharField(max_length=40)
-    linked_in_url = models.CharField(max_length=40)
-    youtube_url = models.CharField(max_length=70)
-    instagram_url = models.CharField(max_length=40)
-    telegram_url = models.CharField(max_length=60)
+    email = models.EmailField(blank=True)
+    phone = models.CharField(max_length=20, blank=True)
+    twitter_url = models.CharField(max_length=40, blank=True)
+    linked_in_url = models.CharField(max_length=40, blank=True)
+    youtube_url = models.CharField(max_length=70, blank=True)
+    instagram_url = models.CharField(max_length=40, blank=True)
+    telegram_url = models.CharField(max_length=60, blank=True)
 
     def __str__(self):
         return 'Datos de Contacto'
