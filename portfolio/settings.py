@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["52.201.16.250", "moralesdelbar.co", "localhost"]
+ALLOWED_HOSTS = ["52.201.16.250", "moralesdelbar.co", "www.moralesdelbar.co" "localhost"]
 
 
 # Application definition
