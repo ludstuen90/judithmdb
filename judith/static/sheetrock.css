@@ -28,7 +28,6 @@ margin: -6px 0 20px 19%;
   display: block;
   margin-left: auto;
   margin-right: auto;
-
 }
 
 
@@ -95,6 +94,19 @@ mobile layout
 .social-media-row {
      top: 15px;
  }
+
+
+.profile-image-mobile {
+width: 50%;
+}
+ .homepage-logo {
+ padding-top: 40px;
+}
+
+.bio-ingles {
+padding-top: 20px;
+}
+
  .homepage-bio  {
     margin: 25px 0 0 0;
 
