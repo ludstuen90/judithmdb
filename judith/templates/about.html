@@ -7,42 +7,106 @@
 
   <div class="row">
     <div class="col-md-4 ">
+
+      <!--   On medium and large screens -->
+      <div class="d-none d-md-block">
         <img class="homepage-logo" src="{% static "judith.png" %}">
-<img class="profile-image" src="{% get_media_prefix %}{{ homepage_info.homepage_portrait }}">
+        <img class="profile-image" src="{% get_media_prefix %}{{ homepage_info.homepage_portrait }}">
+      </div>
+
+      <!--   On small screens -->
+      <div class="d-md-none">
+        <img class="homepage-logo" src="{% static "judith-lateral.png" %}">
+         <div class="homepage-bio bio-ingles">
+                {{ bio_ingles.bio_text | safe }}
+             <p>
+            <a data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Read More</a>
+          </p>
+             <div class="collapse multi-collapse" id="multiCollapseExample1">
+           {{ bio_ingles.bio_below_the_fold_text | safe }}
+                   <a target="_blank" href="{% get_media_prefix %}{{ bio_ingles.bio_file }}">
+                <p>Download Resumé
+              <img src="{% static "social-media/document.png" %}"></a>
+            </p>
+            </div>
+
+
+        </div>
+
+
+      </div>
     </div>
 
   <div class="col-md-4">
 
-      <div class="homepage-bio">
-    <div class="social-media-row">
-      <ul>
-        <li><a target="_blank" href="{{ contact_info.instagram_url }}"><img src="{% static "social-media/instagram.png" %}"></a></li>
-          <li><a target="_blank" href="{{ contact_info.linked_in_url }}"><img src="{% static "social-media/linkedin.png" %}"></a></li>
-        <li><a target="_blank" href="{{ contact_info.youtube_url }}"><img src="{% static "social-media/youtube.png" %}"></a></li>
-        <li><a target="_blank" href="{{ contact_info.twitter_url }}"><img src="{% static "social-media/twitter.png" %}"></a></li>
-          <li><a target="_blank" href="{{ contact_info.telegram_url }}"><img src="{% static "social-media/telegram.png" %}"></a></li>
-      </ul>
-    </div>
-       {{ bio_castellano.bio_text | safe }}
+    <!--   On medium and large screens -->
+      <div class="d-none d-md-block">
+       <div class="homepage-bio">
+        <div class="social-media-row">
+          <ul>
+            <li><a target="_blank" href="{{ contact_info.instagram_url }}"><img src="{% static "social-media/instagram.png" %}"></a></li>
+              <li><a target="_blank" href="{{ contact_info.linked_in_url }}"><img src="{% static "social-media/linkedin.png" %}"></a></li>
+            <li><a target="_blank" href="{{ contact_info.youtube_url }}"><img src="{% static "social-media/youtube.png" %}"></a></li>
+            <li><a target="_blank" href="{{ contact_info.twitter_url }}"><img src="{% static "social-media/twitter.png" %}"></a></li>
+              <li><a target="_blank" href="{{ contact_info.telegram_url }}"><img src="{% static "social-media/telegram.png" %}"></a></li>
+          </ul>
+        </div>
+           {{ bio_castellano.bio_text | safe }}
+            {{ bio_castellano.bio_below_the_fold_text | safe }}
+            <a target="_blank" href="{% get_media_prefix %}{{ bio_castellano.bio_file }}"><p>Descargar CV
+              <img src="{% static "social-media/document.png" %}">
+            </p></a>
+          </div>
+      </div>
 
-        <a target="_blank" href="{% get_media_prefix %}{{ bio_castellano.bio_file }}"><p>Descargar CV
-          <img src="{% static "social-media/document.png" %}">
-        </p></a>
+      <!--   On small screens -->
+      <div class="d-md-none">
+        <img class="profile-image profile-image-mobile" src="{% get_media_prefix %}{{ homepage_info.homepage_portrait }}">
+      </div>
+    </div>
+
+
+  <div class="col-md-4">
+
+         <!--   On medium and large screens -->
+      <div class="d-none d-md-block">
+           <div class="homepage-bio bio-ingles">
+              {{ bio_ingles.bio_text | safe }}
+               {{ bio_ingles.bio_below_the_fold_text | safe }}
+            <a target="_blank" href="{% get_media_prefix %}{{ bio_ingles.bio_file }}">
+              <p>Download Resumé
+            <img src="{% static "social-media/document.png" %}"></a>
+          </p>
+        </div>
+      </div>
+
+      <!--   On small screens -->
+      <div class="d-md-none">
+       <div class="homepage-bio">
+        <div class="social-media-row">
+          <ul>
+            <li><a target="_blank" href="{{ contact_info.instagram_url }}"><img src="{% static "social-media/instagram.png" %}"></a></li>
+              <li><a target="_blank" href="{{ contact_info.linked_in_url }}"><img src="{% static "social-media/linkedin.png" %}"></a></li>
+            <li><a target="_blank" href="{{ contact_info.youtube_url }}"><img src="{% static "social-media/youtube.png" %}"></a></li>
+            <li><a target="_blank" href="{{ contact_info.twitter_url }}"><img src="{% static "social-media/twitter.png" %}"></a></li>
+              <li><a target="_blank" href="{{ contact_info.telegram_url }}"><img src="{% static "social-media/telegram.png" %}"></a></li>
+          </ul>
+        </div>
+           {{ bio_castellano.bio_text | safe }}
+            <p>
+            <a data-toggle="collapse" href="#biocastellanocollapse" role="button" aria-expanded="false" aria-controls="biocastellanocollapse">Leer más</a>
+          </p>
+             <div class="collapse multi-collapse" id="biocastellanocollapse">
+            {{ bio_castellano.bio_below_the_fold_text | safe }}
+            <a target="_blank" href="{% get_media_prefix %}{{ bio_castellano.bio_file }}"><p>Descargar CV
+              <img src="{% static "social-media/document.png" %}">
+            </p></a>
+
+             </div>
+          </div>
       </div>
 
     </div>
-    <div class="col-md-4">
-      <div class="homepage-bio bio-ingles">
-
-      {{ bio_ingles.bio_text | safe }}
-
-        <a target="_blank" href="{% get_media_prefix %}{{ bio_ingles.bio_file }}">
-          <p>Download Resumé
-        <img src="{% static "social-media/document.png" %}"></a>
-      </p>
-    </div>
-  </div>
-
 
   </div>
 

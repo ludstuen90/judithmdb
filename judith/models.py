@@ -6,6 +6,7 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 class BioCastellano(models.Model):
     bio_text = RichTextField()
+    bio_below_the_fold_text = RichTextField()
     bio_file = models.FileField(blank=True, null=True)
 
     def __str__(self):
@@ -17,7 +18,8 @@ class BioCastellano(models.Model):
 
 
 class BioIngles(models.Model):
-    bio_text = RichTextField()
+    bio_text = RichTextField(help_text="Agregue la primera mitad del bio acá")
+    bio_below_the_fold_text = RichTextField(help_text="Agregue la segunda mitad del bio acá (que en mobile, aparece cuando hagan clic en leer más")
     bio_file = models.FileField(blank=True, null=True)
 
     def __str__(self):
