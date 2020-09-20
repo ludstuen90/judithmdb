@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
+from environs import Env
 
+env = Env()
+env.read_env()  # read .env file, if it exists
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,12 +25,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DJANGO_DEBUG", False)
 
-ALLOWED_HOSTS = ["52.201.16.250", "moralesdelbar.co", "www.moralesdelbar.co" "localhost"]
+ALLOWED_HOSTS = ["52.201.16.250", "moralesdelbar.co", "www.moralesdelbar.co", "localhost"]
 
 
 # Application definition
@@ -91,12 +92,12 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv("DJANGO_DATABASE_ENGINE"),
-        'NAME': os.getenv("DJANGO_DATABASE_NAME"),
-        'USER': os.getenv("DJANGO_DATABASE_USER"),
-        'PASSWORD': os.getenv("DJANGO_DATABASE_PASSWORD"),
-        'HOST': os.getenv("DJANGO_DATABASE_HOST"),
-        'PORT': os.getenv("DJANGO_DATABASE_PORT"),
+        'ENGINE': env.str("DJANGO_DATABASE_ENGINE"),
+        'NAME': env.str("DJANGO_DATABASE_NAME"),
+        'USER': env.str("DJANGO_DATABASE_USER"),
+        'PASSWORD': env.str("DJANGO_DATABASE_PASSWORD"),
+        'HOST': env.str("DJANGO_DATABASE_HOST"),
+        'PORT': env.str("DJANGO_DATABASE_PORT"),
     }
 }
 
