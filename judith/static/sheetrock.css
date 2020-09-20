@@ -23,8 +23,11 @@ body {
 
 
 .homepage-logo {
-width: 60%;
+width: 75%;
 margin: -6px 0 20px 19%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 
 }
 
@@ -49,9 +52,10 @@ margin: 40px 0 80px 0;
 
 }
 
-.homepage-bio  {
-    margin: 275px 0 0 0;
 
+
+.bio-ingles {
+    padding: 72px 0 0 0;
 }
 
 .profile-image {
@@ -71,21 +75,28 @@ margin: 40px 0 80px 0;
  }
 
 .social-media-row {
-     position: absolute;
+     position: static;
      width: 335px;
-     top: 194px;
+     margin-left: -1.5%;
  }
 
+
+
+@media (min-width: 767px) {
+.homepage-bio  {
+    margin: 59.5% 0 0 0;
+}
+}
 
 /*
 mobile layout
 */
-@media (max-width: 700px) {
+@media (max-width: 767px) {
 .social-media-row {
      top: 15px;
  }
  .homepage-bio  {
-    margin: 85px 0 0 0;
+    margin: 25px 0 0 0;
 
 }
 
@@ -97,7 +108,7 @@ ipad pro
 */
 @media(max-width: 1028px) and (min-width: 1020px) {
 .social-media-row {
-     left: 3%;
+     margin-left: -3%;
  }
 }
 
@@ -107,21 +118,21 @@ ipad
 */
 @media(max-width: 780px) and (min-width: 765px) {
 .social-media-row {
-     left: -2%;
+     margin-left: -7%;
  }
 }
 
 
 @media(max-width: 550px) and (min-width: 530px) {
 .social-media-row {
-     left: 10%;
+     margin-left: 10%;
  }
 }
 
 
 @media(max-width: 420px) and (min-width: 399px) {
 .social-media-row {
-     left: 5%;
+     margin-left: 1%;
  }
 }
 
@@ -131,7 +142,7 @@ iphone 6,7,8
 */
 @media(max-width: 380px) and (min-width: 75px) {
 .social-media-row {
-     left: 1%;
+     margin-left: -3%;
  }
 }
 
@@ -140,7 +151,7 @@ galaxy s5
 */
 @media(max-width: 365px) and (min-width: 358px) {
 .social-media-row {
-     left: -1%;
+     margin-left: -6%;
  }
 }
 /*
@@ -148,7 +159,7 @@ iphone 5
 */
 @media(max-width: 325px) and (min-width: 315px) {
 .social-media-row {
-     left: -7%;
+     margin-left: -13%;
  }
 }
 /*
@@ -156,7 +167,7 @@ galaxy fold
 */
 @media(max-width: 290px) and (min-width: 270px) {
 .social-media-row {
-     left: -13%;
+     margin-left: -23%;
  }
 }
 
