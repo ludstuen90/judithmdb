@@ -19,10 +19,18 @@
         <img class="homepage-logo" src="{% static "judith-lateral.png" %}">
          <div class="homepage-bio bio-ingles">
                 {{ bio_ingles.bio_text | safe }}
-              <a target="_blank" href="{% get_media_prefix %}{{ bio_ingles.bio_file }}">
+             <p>
+            <a data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Read More</a>
+          </p>
+             <div class="collapse multi-collapse" id="multiCollapseExample1">
+           {{ bio_ingles.bio_below_the_fold_text | safe }}
+                   <a target="_blank" href="{% get_media_prefix %}{{ bio_ingles.bio_file }}">
                 <p>Download Resumé
               <img src="{% static "social-media/document.png" %}"></a>
             </p>
+            </div>
+
+
         </div>
 
 
@@ -44,7 +52,7 @@
           </ul>
         </div>
            {{ bio_castellano.bio_text | safe }}
-
+            {{ bio_castellano.bio_below_the_fold_text | safe }}
             <a target="_blank" href="{% get_media_prefix %}{{ bio_castellano.bio_file }}"><p>Descargar CV
               <img src="{% static "social-media/document.png" %}">
             </p></a>
@@ -64,6 +72,7 @@
       <div class="d-none d-md-block">
            <div class="homepage-bio bio-ingles">
               {{ bio_ingles.bio_text | safe }}
+               {{ bio_ingles.bio_below_the_fold_text | safe }}
             <a target="_blank" href="{% get_media_prefix %}{{ bio_ingles.bio_file }}">
               <p>Download Resumé
             <img src="{% static "social-media/document.png" %}"></a>
@@ -84,16 +93,20 @@
           </ul>
         </div>
            {{ bio_castellano.bio_text | safe }}
-
+            <p>
+            <a data-toggle="collapse" href="#biocastellanocollapse" role="button" aria-expanded="false" aria-controls="biocastellanocollapse">Leer más</a>
+          </p>
+             <div class="collapse multi-collapse" id="biocastellanocollapse">
+            {{ bio_castellano.bio_below_the_fold_text | safe }}
             <a target="_blank" href="{% get_media_prefix %}{{ bio_castellano.bio_file }}"><p>Descargar CV
               <img src="{% static "social-media/document.png" %}">
             </p></a>
+
+             </div>
           </div>
       </div>
 
     </div>
-
-  </div>
 
   </div>
 
