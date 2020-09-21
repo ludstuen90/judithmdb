@@ -5,6 +5,10 @@ from django.views.generic.list import ListView
 from judith.models import PortfolioItem, BioCastellano, BioIngles, ContactInformation, EnglishPortfolioItem, CasetllanoPortfolioItem, HomePageItems
 
 
+class Placeholder(object):
+    priority = 0
+
+
 class HomepageView(TemplateView):
     template_name = "about.html"
 
@@ -41,11 +45,11 @@ class PortfolioView(ListView):
                 rows.append(row_to_copy)
                 row = list()
         if len(row) == 1:
-            row.append("")
-            row.append("")
+            row.append(Placeholder())
+            row.append(Placeholder())
             rows.append(row)
         if len(row) == 2:
-            row.append("")
+            row.append(Placeholder())
             rows.append(row)
         return rows
 
@@ -57,7 +61,7 @@ class PortfolioViewEn(PortfolioView):
         data = super().get_context_data(**kwargs)
         # Crear listas de 3 de los items en el portafolio para que podamos
         # poner 3 por linea en la página
-        portfolio_queryset = EnglishPortfolioItem.objects.all().order_by("pk")
+        portfolio_queryset = EnglishPortfolioItem.objects.all()
         list_of_rows = self.row_of_three_maker(portfolio_queryset)
         data['portfolio_items'] = list_of_rows
         return data
@@ -71,7 +75,7 @@ class PortfolioViewEs(PortfolioView):
         data = super().get_context_data(**kwargs)
         # Crear listas de 3 de los items en el portafolio para que podamos
         # poner 3 por linea en la página
-        portfolio_queryset = CasetllanoPortfolioItem.objects.all().order_by("pk")
+        portfolio_queryset = CasetllanoPortfolioItem.objects.all()
         list_of_rows = self.row_of_three_maker(portfolio_queryset)
         data['portfolio_items'] = list_of_rows
         return data

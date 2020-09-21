@@ -24,10 +24,12 @@
           </p>
              <div class="collapse multi-collapse" id="multiCollapseExample1">
            {{ bio_ingles.bio_below_the_fold_text | safe }}
+                 {% if bio_ingles.show_cv %}
                    <a target="_blank" href="{% get_media_prefix %}{{ bio_ingles.bio_file }}">
                 <p>Download Resumé
               <img src="{% static "social-media/document.png" %}"></a>
             </p>
+         {% endif %}
             </div>
 
 
@@ -53,9 +55,11 @@
         </div>
            {{ bio_castellano.bio_text | safe }}
             {{ bio_castellano.bio_below_the_fold_text | safe }}
+            {% if bio_castellano.show_cv %}
             <a target="_blank" href="{% get_media_prefix %}{{ bio_castellano.bio_file }}"><p>Descargar CV
               <img src="{% static "social-media/document.png" %}">
             </p></a>
+           {% endif %}
           </div>
       </div>
 
@@ -73,10 +77,13 @@
            <div class="homepage-bio bio-ingles">
               {{ bio_ingles.bio_text | safe }}
                {{ bio_ingles.bio_below_the_fold_text | safe }}
+
+            {% if bio_ingles.show_cv %}
             <a target="_blank" href="{% get_media_prefix %}{{ bio_ingles.bio_file }}">
               <p>Download Resumé
             <img src="{% static "social-media/document.png" %}"></a>
           </p>
+               {% endif %}
         </div>
       </div>
 
@@ -98,10 +105,11 @@
           </p>
              <div class="collapse multi-collapse" id="biocastellanocollapse">
             {{ bio_castellano.bio_below_the_fold_text | safe }}
+                  {% if bio_castellano.show_cv %}
             <a target="_blank" href="{% get_media_prefix %}{{ bio_castellano.bio_file }}"><p>Descargar CV
               <img src="{% static "social-media/document.png" %}">
             </p></a>
-
+                 {% endif %}
              </div>
           </div>
       </div>
