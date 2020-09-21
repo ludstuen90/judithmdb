@@ -20,6 +20,9 @@ body {
 
 }
 
+span.emoji {
+margin-right: 6px;
+}
 
 
 .homepage-logo {

@@ -7,6 +7,7 @@ from ckeditor.fields import RichTextField
 class BioCastellano(models.Model):
     bio_text = RichTextField()
     bio_below_the_fold_text = RichTextField()
+    show_cv = models.BooleanField(help_text="Destildar para esconder el link al CV en el bio")
     bio_file = models.FileField(blank=True, null=True)
 
     def __str__(self):
@@ -20,6 +21,7 @@ class BioCastellano(models.Model):
 class BioIngles(models.Model):
     bio_text = RichTextField(help_text="Agregue la primera mitad del bio acá")
     bio_below_the_fold_text = RichTextField(help_text="Agregue la segunda mitad del bio acá (que en mobile, aparece cuando hagan clic en leer más")
+    show_cv = models.BooleanField(help_text="Destildar para esconder el link al CV en el bio")
     bio_file = models.FileField(blank=True, null=True)
 
     def __str__(self):
@@ -40,19 +42,24 @@ class HomePageItems(models.Model):
 
 
 class PortfolioItem(models.Model):
-    portfolio_image = models.ImageField()
-    portfolio_description = models.TextField()
+    class Meta:
+        ordering = ['-priority']
+
     PORTFOLIO_SITE_HOSTING_CHOICES = [
         ('EX', 'ExternalSite'),
         ('PD', 'PDF')
     ]
+    priority = models.IntegerField(help_text="El ítem con el número más grande va a aparecer primero en el portafolio")
+    portfolio_description = models.TextField()
+    portfolio_image = models.ImageField()
+
     portfolio_item_hosting = models.CharField(
         max_length=2,
         choices=PORTFOLIO_SITE_HOSTING_CHOICES,
         default='EX',
     )
-    bio_file = models.FileField(blank=True)
     external_site_url = models.CharField(blank=True, max_length=300)
+    bio_file = models.FileField(blank=True)
 
     def __str__(self):
         return self.portfolio_description
