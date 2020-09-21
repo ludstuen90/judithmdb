@@ -12,13 +12,10 @@
       </div>
     </div>
 
-
-
       {% for clip1, clip2, clip3 in portfolio_items %}
       <div class="card-group">
-
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
+        <div class="card mb-3" style="max-width: 540px">
+          <div class="row no-gutters">
           <div class="col-md-4">
              <a target="_blank" href="{% if clip1.portfolio_item_hosting == 'PD' %}
             {{ clip1.bio_file }}
@@ -57,10 +54,16 @@
           </div>
         </div>
 {% endif %}
+      {% if not clip2.portfolio_description %}
+        <!--Added to ensure card length in desktop-->
+          <div style="width: 33.3333333%;">
+            </div>
+        {% endif %}
 
 {% if clip3.portfolio_description %}
+
   <div class="card mb-3" style="max-width: 540px;">
-  <div class="row no-gutters">
+      <div class="row no-gutters">
     <div class="col-md-4">
        <a target="_blank" href="{% if clip3.portfolio_item_hosting == 'PD' %}
             {{ clip3.bio_file }}
@@ -79,10 +82,14 @@
 </div>
 {% endif %}
 
+{% if not clip3.portfolio_description %}
+<!--Added to ensure card length in desktop-->
+          <div style="width: 33.3333333%;">
+</div>
+{% endif %}
+
       </div>
  {% endfor %}
-
-
 
 
 {% endblock %}
